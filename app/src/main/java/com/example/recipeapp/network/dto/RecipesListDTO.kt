@@ -1,7 +1,7 @@
 package com.example.recipeapp.network.dto
 
-import com.example.recipeapp.data.RecipeModel
+import com.example.recipeapp.data.Recipe
 
 data class RecipesListDTO(
-    val recipes: List<RecipeModel>
+    val recipes: List<Recipe>
 )
