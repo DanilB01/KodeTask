@@ -1,3 +1,60 @@
 <resources>
     <string name="app_name">RecipeApp</string>
+    <string name="large_text">Компоненты Android (Activity, Service, ContentProvider, BroadcastReciever)
+LifeCycle: Activity vs Fragment
+Async work в Android (способы, отличия, UI-Thread, Handler, Looper)
+Process, Task, Back Stack, режимы работы (singleTop, singleInstance)
+OOP, SOLID
+MVP/MVVM
+Java (Структуры данных, коллекции, исключения, анонимные классы, GC, ассинхронщина)
+… все остальное описано тут https://virgo.ftc.ru/pages/viewpage.action?pageId=939047152
+iOS
+UI-архитектура (MVC, MVVM, VIPER и т.п.). Основные особенности, применимость с учётом UIKit.
+Способы хранения данных. (CoreData, Keychain, UserDefaults etc.). В чем отличия и когда применять каждый из них?
+Доставка приложения до пользователей: AppStore, Review Guidelines, Expedited Review, цифровая подпись.
+Autoresizing masks, Autolayout, Size Classes.
+Механизмы асинхронной работы, выполнение задач в фоне.
+Чем отличаются DI, DIP, IoC?
+Ссылочные типы и типы по значению в Swift. Copy on Write. Управление памятью (ARC).
+Шаблоны программирования, типичные для UIKit, Foundation.
+Protocol oriented programming.
+
+        Компоненты Android (Activity, Service, ContentProvider, BroadcastReciever)
+LifeCycle: Activity vs Fragment
+Async work в Android (способы, отличия, UI-Thread, Handler, Looper)
+Process, Task, Back Stack, режимы работы (singleTop, singleInstance)
+OOP, SOLID
+MVP/MVVM
+Java (Структуры данных, коллекции, исключения, анонимные классы, GC, ассинхронщина)
+… все остальное описано тут https://virgo.ftc.ru/pages/viewpage.action?pageId=939047152
+iOS
+UI-архитектура (MVC, MVVM, VIPER и т.п.). Основные особенности, применимость с учётом UIKit.
+Способы хранения данных. (CoreData, Keychain, UserDefaults etc.). В чем отличия и когда применять каждый из них?
+Доставка приложения до пользователей: AppStore, Review Guidelines, Expedited Review, цифровая подпись.
+Autoresizing masks, Autolayout, Size Classes.
+Механизмы асинхронной работы, выполнение задач в фоне.
+Чем отличаются DI, DIP, IoC?
+Ссылочные типы и типы по значению в Swift. Copy on Write. Управление памятью (ARC).
+Шаблоны программирования, типичные для UIKit, Foundation.
+Protocol oriented programming.
+
+        Компоненты Android (Activity, Service, ContentProvider, BroadcastReciever)
+LifeCycle: Activity vs Fragment
+Async work в Android (способы, отличия, UI-Thread, Handler, Looper)
+Process, Task, Back Stack, режимы работы (singleTop, singleInstance)
+OOP, SOLID
+MVP/MVVM
+Java (Структуры данных, коллекции, исключения, анонимные классы, GC, ассинхронщина)
+… все остальное описано тут https://virgo.ftc.ru/pages/viewpage.action?pageId=939047152
+iOS
+UI-архитектура (MVC, MVVM, VIPER и т.п.). Основные особенности, применимость с учётом UIKit.
+Способы хранения данных. (CoreData, Keychain, UserDefaults etc.). В чем отличия и когда применять каждый из них?
+Доставка приложения до пользователей: AppStore, Review Guidelines, Expedited Review, цифровая подпись.
+Autoresizing masks, Autolayout, Size Classes.
+Механизмы асинхронной работы, выполнение задач в фоне.
+Чем отличаются DI, DIP, IoC?
+Ссылочные типы и типы по значению в Swift. Copy on Write. Управление памятью (ARC).
+Шаблоны программирования, типичные для UIKit, Foundation.
+Protocol oriented programming.
+</string>
 </resources>
