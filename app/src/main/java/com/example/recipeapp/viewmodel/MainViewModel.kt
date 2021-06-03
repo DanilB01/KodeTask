@@ -30,6 +30,7 @@ class MainViewModel(app: Application): AndroidViewModel(app) {
     fun updateData() {
         GlobalScope.launch(Dispatchers.Main) {
             _isLoading.value = true
+            _recipesList.value = emptyList()
             try {
                 _recipesList.value = mainModel.getRecipes()
                 _isError.value = false
