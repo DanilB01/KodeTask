@@ -1,22 +1,23 @@
 package com.example.recipeapp.view
 
 import android.content.Intent
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.example.recipeapp.R
-import com.example.recipeapp.adapter.RecipeRecyclerViewAdapter
+import com.example.recipeapp.decoration.RecipeDividerItemDecoration
+import com.example.recipeapp.adapter.RecipeAdapter
+import com.example.recipeapp.adapter.interfaces.RecipeAdapterListener
 import com.example.recipeapp.databinding.ActivityMainBinding
 import com.example.recipeapp.viewmodel.MainViewModel
 
-class MainActivity: AppCompatActivity(), IMainActivity {
+class MainActivity: AppCompatActivity(), RecipeAdapterListener {
 
     private lateinit var binding: ActivityMainBinding
     private val model: MainViewModel by viewModels()
-    private val recipeRecyclerAdapter = RecipeRecyclerViewAdapter(this)
+    private val recipeRecyclerAdapter = RecipeAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,10 @@ class MainActivity: AppCompatActivity(), IMainActivity {
         binding.lifecycleOwner = this
 
         binding.recipeRecyclerView.adapter = recipeRecyclerAdapter
+
+        binding.recipeRecyclerView.addItemDecoration(
+                RecipeDividerItemDecoration(resources.getDimensionPixelSize(R.dimen.recyclerItemBottomPadding))
+        )
 
         model.recipesList.observe(this){
             recipeRecyclerAdapter.updateDataSet(it)

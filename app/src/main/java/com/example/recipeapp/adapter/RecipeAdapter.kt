@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipeapp.data.Recipe
 import com.example.recipeapp.databinding.ItemRecipeBinding
-import com.example.recipeapp.view.IMainActivity
+import com.example.recipeapp.adapter.interfaces.RecipeAdapterListener
 
-class RecipeRecyclerViewAdapter(private val activity: IMainActivity): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RecipeAdapter(private val activity: RecipeAdapterListener): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val recipeList = mutableListOf<Recipe>()
 
@@ -18,7 +18,7 @@ class RecipeRecyclerViewAdapter(private val activity: IMainActivity): RecyclerVi
     }
 
     class ViewHolder(private val itemBinding: ItemRecipeBinding): RecyclerView.ViewHolder(itemBinding.root) {
-        fun bind(recipe: Recipe, activity: IMainActivity){
+        fun bind(recipe: Recipe, activity: RecipeAdapterListener){
             itemBinding.recipeItemNameTextView.text = recipe.name
             itemBinding.recipeItemDescriptionTextView.text = recipe.description
             itemBinding.recipeCardView.setOnClickListener {
