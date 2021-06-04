@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.example.recipeapp.R
-import com.example.recipeapp.decoration.RecipeDividerItemDecoration
+import com.example.recipeapp.decoration.RecipeItemDecoration
 import com.example.recipeapp.adapter.RecipeAdapter
 import com.example.recipeapp.adapter.interfaces.RecipeAdapterListener
 import com.example.recipeapp.databinding.ActivityMainBinding
@@ -28,7 +28,7 @@ class MainActivity: AppCompatActivity(), RecipeAdapterListener {
         binding.recipeRecyclerView.adapter = recipeRecyclerAdapter
 
         binding.recipeRecyclerView.addItemDecoration(
-                RecipeDividerItemDecoration(resources.getDimensionPixelSize(R.dimen.recyclerItemBottomPadding))
+                RecipeItemDecoration(resources.getDimensionPixelSize(R.dimen.recyclerItemBottomPadding))
         )
 
         model.recipesList.observe(this){

@@ -4,7 +4,7 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class RecipeDividerItemDecoration(
+class RecipeItemDecoration(
         private val padding: Int
 ):RecyclerView.ItemDecoration() {
 
