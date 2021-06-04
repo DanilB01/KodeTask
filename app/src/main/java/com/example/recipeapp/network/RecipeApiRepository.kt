@@ -5,6 +5,6 @@ class RecipeApiRepository(private val recipesApi: RecipeApi) {
 
     suspend fun getRecipes() = recipesApi.getRecipes().recipes
 
-    suspend fun getStatuses(uuid: String) = recipesApi.getRecipeDetails(uuid).recipe
+    suspend fun getRecipeDetails(uuid: String) = recipesApi.getRecipeDetails(uuid).recipe
 
 }

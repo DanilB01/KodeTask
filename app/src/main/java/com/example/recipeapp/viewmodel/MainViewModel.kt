@@ -5,14 +5,14 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.recipeapp.data.Recipe
-import com.example.recipeapp.model.MainModel
+import com.example.recipeapp.model.RecipeModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class MainViewModel(app: Application): AndroidViewModel(app) {
-    private val mainModel = MainModel(getApplication())
+    private val model = RecipeModel(getApplication())
 
     private var _recipesList: MutableLiveData<List<Recipe>> = MutableLiveData()
     val recipesList: LiveData<List<Recipe>> = _recipesList
@@ -32,7 +32,7 @@ class MainViewModel(app: Application): AndroidViewModel(app) {
             _isLoading.value = true
             _recipesList.value = emptyList()
             try {
-                _recipesList.value = mainModel.getRecipes()
+                _recipesList.value = model.getRecipes()
                 _isError.value = false
             } catch (e: Exception) {
                 _isError.value = true
