@@ -1,4 +1,4 @@
-package com.example.app.network
+package com.example.recipeapp.network
 
 import com.example.recipeapp.network.dto.RecipeDetailsDTO
 import com.example.recipeapp.network.dto.RecipesListDTO

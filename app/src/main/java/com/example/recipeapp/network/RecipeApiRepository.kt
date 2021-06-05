@@ -1,4 +1,4 @@
-package com.example.app.network
+package com.example.recipeapp.network
 
 
 class RecipeApiRepository(private val recipesApi: RecipeApi) {

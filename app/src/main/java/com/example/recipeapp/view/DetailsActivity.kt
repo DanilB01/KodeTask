@@ -7,15 +7,13 @@ import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.example.recipeapp.R
-import com.example.recipeapp.adapter.RecipeAdapter
 import com.example.recipeapp.adapter.RecipeImagesAdapter
 import com.example.recipeapp.adapter.SimilarRecipeAdapter
 import com.example.recipeapp.adapter.interfaces.RecipeImageAdapterListener
 import com.example.recipeapp.databinding.ActivityDetailsBinding
-import com.example.recipeapp.databinding.ActivityMainBinding
 import com.example.recipeapp.decoration.SimilarRecipeItemDecorator
 import com.example.recipeapp.viewmodel.DetailsViewModel
-import com.example.recipeapp.viewmodel.MainViewModel
+import com.example.recipeapp.utils.formatText
 
 class DetailsActivity : AppCompatActivity(), RecipeImageAdapterListener {
 
@@ -41,8 +39,12 @@ class DetailsActivity : AppCompatActivity(), RecipeImageAdapterListener {
 
         model.recipe.observe(this) {
             binding.detailsView.nameTextView.text = it.name
+
+            binding.detailsView.descriptionLabelTextView.isVisible = !it.description.isNullOrEmpty()
+            binding.detailsView.descriptionTextView.isVisible = !it.description.isNullOrEmpty()
             binding.detailsView.descriptionTextView.text = it.description
-            binding.detailsView.instructionTextView.text = it.instructions
+
+            binding.detailsView.instructionTextView.text = it.instructions.formatText()
             binding.detailsView.difficultyRatingBar.rating = it.difficulty.toFloat()
             binding.detailsView.similarLabelTextView.isVisible = it.similar.isNotEmpty()
 

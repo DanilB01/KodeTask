@@ -1,6 +1,5 @@
 package com.example.recipeapp.network
 
-import com.example.app.network.RecipeApi
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

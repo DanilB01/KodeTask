@@ -1,9 +1,8 @@
 package com.example.recipeapp.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.recipeapp.data.Recipe
 import com.example.recipeapp.model.RecipeModel
 import kotlinx.coroutines.Dispatchers
@@ -11,8 +10,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class MainViewModel(app: Application): AndroidViewModel(app) {
-    private val model = RecipeModel(getApplication())
+class MainViewModel: ViewModel() {
+    private val model = RecipeModel()
 
     private var _recipesList: MutableLiveData<List<Recipe>> = MutableLiveData()
     val recipesList: LiveData<List<Recipe>> = _recipesList

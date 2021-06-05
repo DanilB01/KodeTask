@@ -1,20 +1,17 @@
 package com.example.recipeapp.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.recipeapp.data.Recipe
+import androidx.lifecycle.ViewModel
 import com.example.recipeapp.data.RecipeDetails
 import com.example.recipeapp.model.RecipeModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.lang.Exception
-import java.util.*
 
-class DetailsViewModel(app:Application): AndroidViewModel(app) {
-    private val model = RecipeModel(getApplication())
+class DetailsViewModel: ViewModel() {
+    private val model = RecipeModel()
 
     private var _recipe: MutableLiveData<RecipeDetails> = MutableLiveData()
     val recipe: LiveData<RecipeDetails> = _recipe
