@@ -31,6 +31,26 @@
                     android:scaleType="centerCrop"
                     app:layout_collapseMode="parallax" />
 
+                <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
+                    android:id="@+id/dots_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:dotsColor="@color/white"
+                    app:dotsCornerRadius="8dp"
+                    app:dotsSize="8dp"
+                    app:dotsSpacing="2dp"
+                    android:layout_gravity="center|bottom"
+                    android:layout_marginBottom="8dp"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/photoNumberChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    app:chipBackgroundColor="@color/whiteGreen"
+                    android:layout_marginEnd="8dp"/>
+
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
