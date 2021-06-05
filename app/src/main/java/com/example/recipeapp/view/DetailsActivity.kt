@@ -29,6 +29,12 @@ class DetailsActivity : AppCompatActivity(), RecipeImageAdapterListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_details)
         binding.lifecycleOwner = this
 
+        binding.toolbar.title = ""
+        setSupportActionBar(binding.toolbar)
+        binding.toolbar.setNavigationOnClickListener {
+            finish()
+        }
+
         binding.imageViewPager.adapter = imagesAdapter
         binding.detailsView.similarRecyclerView.adapter = similarRecipeAdapter
         binding.detailsView.similarRecyclerView.addItemDecoration(
