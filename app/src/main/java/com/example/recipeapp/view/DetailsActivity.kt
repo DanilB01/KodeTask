@@ -15,6 +15,7 @@ import com.example.recipeapp.databinding.ActivityDetailsBinding
 import com.example.recipeapp.decoration.SimilarRecipeItemDecorator
 import com.example.recipeapp.viewmodel.DetailsViewModel
 import com.example.recipeapp.utils.formatText
+import com.example.recipeapp.view.dialog.PhotoShowFragment
 
 class DetailsActivity : AppCompatActivity(), RecipeImageAdapterListener {
 

@@ -1,19 +1,13 @@
-package com.example.recipeapp.view
+package com.example.recipeapp.view.dialog
 
 import android.Manifest
-import android.content.ContentValues
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.os.Build
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.databinding.DataBindingUtil
@@ -21,24 +15,14 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.recipeapp.R
-import com.example.recipeapp.databinding.LayoutPhotoShowingBinding
-import com.example.recipeapp.viewmodel.MainViewModel
+import com.example.recipeapp.databinding.DialogPhotoShowingBinding
 import com.example.recipeapp.viewmodel.PhotoViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import java.io.File
-import java.io.OutputStream
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.ZoneOffset
-import java.util.*
 
 class PhotoShowFragment(
     private val imageURL: String
 ): DialogFragment() {
 
-    private lateinit var binding: LayoutPhotoShowingBinding
+    private lateinit var binding: DialogPhotoShowingBinding
     private val viewModel by lazy {
         ViewModelProvider(this).get(PhotoViewModel::class.java)
     }
@@ -62,7 +46,7 @@ class PhotoShowFragment(
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(
-            inflater, R.layout.layout_photo_showing, container, false)
+            inflater, R.layout.dialog_photo_showing, container, false)
         return binding.root
     }
 

@@ -2,17 +2,11 @@ package com.example.recipeapp.model
 
 import android.content.ContentValues
 import android.content.Context
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.graphics.drawable.toBitmap
 import com.example.recipeapp.R
-import com.example.recipeapp.view.PhotoShowFragment
 import java.io.File
 import java.io.OutputStream
 import java.util.*
