@@ -3,6 +3,8 @@
     <string name="uuid">uuid</string>
     <string name="slashSign">/</string>
     <string name="photoShow">PhotoShow</string>
-    <string name="imageSavedMessage">image was uploaded into folder Pictures</string>
+    <string name="imageSavedMessage">Image was downloaded into folder Pictures</string>
+    <string name="savingErrorMessage">Error with downloading image</string>
+    <string name="forbiddenMessage">Saving images is forbidden</string>
     <string name="mimeTypeImage">image/jpeg</string>
 </resources>
