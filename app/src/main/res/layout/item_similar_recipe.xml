@@ -19,7 +19,8 @@
             android:layout_height="@dimen/similarRecipeImageHeight"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/recipePhoto" />
 
         <TextView
             android:id="@+id/similarRecipeNameTextView"

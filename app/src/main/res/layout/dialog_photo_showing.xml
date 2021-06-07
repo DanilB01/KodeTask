@@ -20,13 +20,15 @@
         style="@style/PhotoShowImageButtonStyle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_back_white" />
+        app:srcCompat="@drawable/ic_arrow_back_white"
+        android:contentDescription="@string/back" />
 
     <ImageButton
         android:id="@+id/downloadImageButton"
         style="@style/PhotoShowImageButtonStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_save_white" />
+        app:srcCompat="@drawable/ic_save_white"
+        android:contentDescription="@string/save" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

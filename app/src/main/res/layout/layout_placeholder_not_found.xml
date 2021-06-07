@@ -12,7 +12,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pic_not_found" />
+        app:srcCompat="@drawable/pic_not_found"
+        android:contentDescription="@string/notFoundMessage" />
 
     <TextView
         android:id="@+id/notFoundTextView"
