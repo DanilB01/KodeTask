@@ -2,7 +2,6 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recipeCardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -19,7 +18,7 @@
         <ImageView
             android:id="@+id/recipeImageView"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/mainListRecipeImageHeight"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,13 +26,9 @@
 
         <TextView
             android:id="@+id/recipeItemNameTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            style="@style/TitleTextStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,13 +36,9 @@
 
         <TextView
             android:id="@+id/recipeItemDescriptionTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:textSize="16sp"
-            android:lines="2"
-            android:ellipsize="end"
+            style="@style/SubtitleTextStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recipeItemNameTextView" />

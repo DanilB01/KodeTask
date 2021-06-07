@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="backgroundColor">#e6e6e6</color>
+    <color name="grey">#5a5a5a</color>
 
+    <color name="whiteGreen">#f0fdf0</color>
     <color name="paleGreen">#A2F6A8</color>
     <color name="paleGreenAlpha">#8ad18e</color>
-    <color name="whiteGreen">#f0fdf0</color>
 
+    <color name="secondaryColor">#8bffa8</color>
 </resources>

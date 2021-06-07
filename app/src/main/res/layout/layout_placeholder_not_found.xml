@@ -16,12 +16,8 @@
 
     <TextView
         android:id="@+id/notFoundTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="No such recipe found"
-        android:textAlignment="center"
-        android:textSize="21sp"
+        style="@style/PlaceholderTextViewStyle"
+        android:text="@string/notFoundMessage"
         app:layout_constraintEnd_toEndOf="@+id/notFoundImageView"
         app:layout_constraintStart_toStartOf="@+id/notFoundImageView"
         app:layout_constraintTop_toBottomOf="@+id/notFoundImageView" />

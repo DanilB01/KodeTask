@@ -3,7 +3,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingHorizontal="16dp"
@@ -14,27 +13,24 @@
         android:id="@+id/nameTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        style="@style/TitleTextStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/difficultyLabelTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/BasicTextStyle.Bold"
         android:layout_marginTop="16dp"
-        android:text="Difficulty"
-        android:textStyle="italic"
+        android:text="@string/difficulty"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
 
     <RatingBar
         android:id="@+id/difficultyRatingBar"
         android:layout_width="wrap_content"
-        android:layout_height="34dp"
+        android:layout_height="@dimen/difficultyRatingBarHeight"
         android:layout_marginTop="4dp"
         android:isIndicator="true"
         android:progressDrawable="@drawable/difficulty_rating_drawable"
@@ -43,51 +39,44 @@
 
     <TextView
         android:id="@+id/descriptionLabelTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/BasicTextStyle.Bold"
         android:layout_marginTop="16dp"
-        android:text="Description"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:text="@string/description"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/difficultyRatingBar" />
 
     <TextView
         android:id="@+id/descriptionTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        style="@style/BasicTextStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionLabelTextView" />
 
     <TextView
         android:id="@+id/instructionLabelTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="16sp"
+        style="@style/BasicTextStyle.Bold"
         android:layout_marginTop="16dp"
-        android:text="Instruction"
+        android:text="@string/instruction"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
 
     <TextView
         android:id="@+id/instructionTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        style="@style/BasicTextStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/instructionLabelTextView" />
 
     <TextView
         android:id="@+id/similarLabelTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/BasicTextStyle.Bold"
         android:layout_marginTop="16dp"
-        android:textStyle="italic|bold"
-        android:text="You may also like"
+        android:text="@string/similarMessage"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/instructionTextView" />
 
@@ -95,7 +84,7 @@
         android:id="@+id/similarRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="actionBarHeight">?attr/actionBarSize</dimen>
+    <dimen name="appBarLayoutHeight">400dp</dimen>
+
     <dimen name="recyclerItemBottomPadding">16dp</dimen>
-    <dimen name="similarRecipePadding">8dp</dimen>
+    <dimen name="similarRecipeDividerPadding">8dp</dimen>
+
+    <!-- Depends on picture's size in difficulty_rating_drawable.xml -->
+    <dimen name="difficultyRatingBarHeight">34dp</dimen>
+
+    <dimen name="similarRecipeImageWidth">150dp</dimen>
+    <dimen name="similarRecipeImageHeight">125dp</dimen>
+
+    <dimen name="mainListRecipeImageHeight">200dp</dimen>
+
+    <dimen name="titleTextSize">20sp</dimen>
+    <dimen name="subtitleTextSize">16sp</dimen>
+    <dimen name="basicTextSize">14sp</dimen>
 </resources>

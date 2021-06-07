@@ -27,16 +27,16 @@ class DetailsActivity : AppCompatActivity(), RecipeImageAdapterListener {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.toolbar.title = ""
-        setSupportActionBar(binding.toolbar)
-        binding.toolbar.setNavigationOnClickListener {
+        binding.detailsToolbar.title = ""
+        setSupportActionBar(binding.detailsToolbar)
+        binding.detailsToolbar.setNavigationOnClickListener {
             finish()
         }
 
         binding.imageViewPager.adapter = imagesAdapter
         binding.detailsView.similarRecyclerView.adapter = similarRecipeAdapter
         binding.detailsView.similarRecyclerView.addItemDecoration(
-                SimilarRecipeItemDecorator(resources.getDimensionPixelSize(R.dimen.similarRecipePadding))
+                SimilarRecipeItemDecorator(resources.getDimensionPixelSize(R.dimen.similarRecipeDividerPadding))
         )
         binding.dotsIndicator.setViewPager2(binding.imageViewPager)
 

@@ -15,21 +15,16 @@
 
         <ImageView
             android:id="@+id/similarRecipeImageView"
-            android:layout_width="150dp"
-            android:layout_height="125dp"
+            android:layout_width="@dimen/similarRecipeImageWidth"
+            android:layout_height="@dimen/similarRecipeImageHeight"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/similarRecipeNameTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:lines="2"
-            android:ellipsize="end"
-            android:textColor="@color/black"
-            android:textSize="14sp"
+            style="@style/SubtitleTextStyle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/similarRecipeImageView"
             app:layout_constraintStart_toStartOf="@+id/similarRecipeImageView"

@@ -8,11 +8,10 @@
     android:layout_height="match_parent"
     tools:context=".view.DetailsActivity">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="@dimen/appBarLayoutHeight"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -21,7 +20,7 @@
             android:fitsSystemWindows="true"
             app:contentScrim="@color/paleGreen"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
-            app:toolbarId="@id/toolbar">
+            app:toolbarId="@id/detailsToolbar">
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/imageViewPager"
@@ -51,9 +50,9 @@
                 android:layout_marginEnd="8dp"/>
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/detailsToolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="@dimen/actionBarHeight"
                 app:layout_collapseMode="pin"
                 app:navigationIcon="@drawable/ic_arrow_back_black"/>
 

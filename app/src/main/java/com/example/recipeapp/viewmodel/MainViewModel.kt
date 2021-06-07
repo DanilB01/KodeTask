@@ -32,11 +32,11 @@ class MainViewModel: ViewModel() {
     val isNotFound: LiveData<Boolean> = _isNotFound
 
     init {
-        _isNotFound.value = false
         refreshData()
     }
 
     private fun filterData() {
+        _isError.value = false
         _filteredRecipeList.value = _recipesList.value?.filter {
             it.name.contains(query, true) ||
                     it.instructions.contains(query, true) ||
@@ -63,6 +63,7 @@ class MainViewModel: ViewModel() {
 
     fun refreshData() {
         GlobalScope.launch(Dispatchers.Main) {
+            _isNotFound.value = false
             _isLoading.value = true
             _recipesList.value = emptyList()
             _filteredRecipeList.value = emptyList()
