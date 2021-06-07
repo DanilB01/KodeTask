@@ -23,7 +23,7 @@ class SimilarRecipeAdapter(
 
     class ViewHolder(private val itemBinding: ItemSimilarRecipeBinding): RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(recipe: RecipeBrief, recipeListener: RecipeAdapterListener){
-            itemBinding.similarRecipeCardView.cardElevation = 4f
+            itemBinding.similarRecipeCardView.cardElevation = 8f
             itemBinding.similarRecipeNameTextView.text = recipe.name
                 Glide
                         .with(itemBinding.root)

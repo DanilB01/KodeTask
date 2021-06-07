@@ -69,12 +69,7 @@
         <item name="android:background">@null</item>
     </style>
 
-    <style name="ToolbarSizeStyle">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">@dimen/actionBarHeight</item>
-    </style>
-
-    <style name="ToolbarSizeStyle.MainToolbar">
+    <style name="MainToolbarStyle">
         <item name="android:background">@color/paleGreen</item>
         <item name="menu">@menu/menu_main</item>
         <item name="title">@string/app_name</item>

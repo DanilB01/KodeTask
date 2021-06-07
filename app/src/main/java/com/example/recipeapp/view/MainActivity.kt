@@ -30,7 +30,6 @@ class MainActivity: AppCompatActivity(), RecipeAdapterListener, SortOptionListen
         setSupportActionBar(binding.mainToolbar)
 
         binding.recipeRecyclerView.adapter = recipeRecyclerAdapter
-
         binding.recipeRecyclerView.addItemDecoration(
                 RecipeItemDecoration(resources.getDimensionPixelSize(R.dimen.recyclerItemBottomPadding))
         )

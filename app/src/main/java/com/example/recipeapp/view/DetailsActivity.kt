@@ -3,6 +3,7 @@ package com.example.recipeapp.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.viewpager2.widget.ViewPager2
@@ -10,6 +11,8 @@ import com.example.recipeapp.R
 import com.example.recipeapp.adapter.RecipeImagesAdapter
 import com.example.recipeapp.adapter.SimilarRecipeAdapter
 import com.example.recipeapp.adapter.interfaces.RecipeImageAdapterListener
+import com.example.recipeapp.data.Recipe
+import com.example.recipeapp.data.RecipeDetails
 import com.example.recipeapp.databinding.ActivityDetailsBinding
 import com.example.recipeapp.decoration.SimilarRecipeItemDecorator
 import com.example.recipeapp.viewmodel.DetailsViewModel
@@ -27,37 +30,19 @@ class DetailsActivity : AppCompatActivity(), RecipeImageAdapterListener {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.detailsToolbar.title = ""
-        setSupportActionBar(binding.detailsToolbar)
-        binding.detailsToolbar.setNavigationOnClickListener {
-            finish()
-        }
-
-        binding.imageViewPager.adapter = imagesAdapter
-        binding.detailsView.similarRecyclerView.adapter = similarRecipeAdapter
-        binding.detailsView.similarRecyclerView.addItemDecoration(
-                SimilarRecipeItemDecorator(resources.getDimensionPixelSize(R.dimen.similarRecipeDividerPadding))
-        )
-        binding.dotsIndicator.setViewPager2(binding.imageViewPager)
-
-
-
         val recipeUuid = intent.getStringExtra(resources.getString(R.string.uuid))
         model.setRecipe(recipeUuid)
 
+        setUpToolbar()
+        setUpDynamicLists()
+
         model.recipe.observe(this) {
-            binding.detailsView.nameTextView.text = it.name
+            onRecipeChanged(it)
+        }
 
-            binding.detailsView.descriptionLabelTextView.isVisible = !it.description.isNullOrEmpty()
-            binding.detailsView.descriptionTextView.isVisible = !it.description.isNullOrEmpty()
-            binding.detailsView.descriptionTextView.text = it.description
-
-            binding.detailsView.instructionTextView.text = it.instructions.formatText()
-            binding.detailsView.difficultyRatingBar.rating = it.difficulty.toFloat()
-            binding.detailsView.similarLabelTextView.isVisible = it.similar.isNotEmpty()
-
-            imagesAdapter.updateDataSet(it.images)
-            similarRecipeAdapter.updateDataSet(it.similar)
+        model.isError.observe(this) {
+            if(it)
+                showErrorToast()
         }
 
         binding.imageViewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
@@ -72,6 +57,38 @@ class DetailsActivity : AppCompatActivity(), RecipeImageAdapterListener {
         })
     }
 
+    private fun setUpToolbar() {
+        binding.detailsToolbar.title = ""
+        setSupportActionBar(binding.detailsToolbar)
+        binding.detailsToolbar.setNavigationOnClickListener {
+            finish()
+        }
+    }
+
+    private fun setUpDynamicLists() {
+        binding.imageViewPager.adapter = imagesAdapter
+        binding.detailsView.similarRecyclerView.adapter = similarRecipeAdapter
+        binding.detailsView.similarRecyclerView.addItemDecoration(
+                SimilarRecipeItemDecorator(resources.getDimensionPixelSize(R.dimen.similarRecipeDividerPadding))
+        )
+        binding.dotsIndicator.setViewPager2(binding.imageViewPager)
+    }
+
+    private fun onRecipeChanged(recipe: RecipeDetails) {
+        binding.detailsView.nameTextView.text = recipe.name
+
+        binding.detailsView.descriptionLabelTextView.isVisible = !recipe.description.isNullOrEmpty()
+        binding.detailsView.descriptionTextView.isVisible = !recipe.description.isNullOrEmpty()
+        binding.detailsView.descriptionTextView.text = recipe.description
+
+        binding.detailsView.instructionTextView.text = recipe.instructions.formatText()
+        binding.detailsView.difficultyRatingBar.rating = recipe.difficulty.toFloat()
+        binding.detailsView.similarLabelTextView.isVisible = recipe.similar.isNotEmpty()
+
+        imagesAdapter.updateDataSet(recipe.images)
+        similarRecipeAdapter.updateDataSet(recipe.similar)
+    }
+
     override fun openImage(imageURL: String) {
         PhotoShowFragment(imageURL).show(supportFragmentManager, resources.getString(R.string.photoShow))
     }
@@ -80,5 +97,9 @@ class DetailsActivity : AppCompatActivity(), RecipeImageAdapterListener {
         val intent = Intent(this, DetailsActivity::class.java)
         intent.putExtra(getString(R.string.uuid), recipeUuid)
         startActivity(intent)
+    }
+
+    private fun showErrorToast() {
+        Toast.makeText(this, getString(R.string.errorMessage), Toast.LENGTH_LONG).show()
     }
 }

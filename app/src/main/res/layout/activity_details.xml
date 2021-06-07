@@ -52,14 +52,10 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/detailsToolbar"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/actionBarHeight"
+                android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 app:navigationIcon="@drawable/ic_arrow_back_black"/>
-
-
         </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -71,7 +67,6 @@
         <include
             android:id="@+id/detailsView"
             layout="@layout/layout_recipe_details" />
-
     </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

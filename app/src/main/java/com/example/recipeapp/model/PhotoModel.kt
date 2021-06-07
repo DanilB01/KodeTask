@@ -15,7 +15,10 @@ class PhotoModel(
         private val app: Context
 ) {
     fun tryLoadImage(bitmap: Bitmap): Boolean{
-        val imageName = "${Date().time}.jpg"
+        val imageName = buildString {
+            append(Date().time)
+            append(app.resources.getString(R.string.imageFileType))
+        }
 
         val outputStream = if(Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             getOldStream(imageName)

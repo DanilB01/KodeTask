@@ -10,7 +10,9 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/mainToolbar"
-        style="@style/ToolbarSizeStyle.MainToolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        style="@style/MainToolbarStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

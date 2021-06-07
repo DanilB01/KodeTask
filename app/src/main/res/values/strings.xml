@@ -8,6 +8,7 @@
     <string name="savingErrorMessage">Error with downloading image</string>
     <string name="forbiddenMessage">Saving images is forbidden</string>
     <string name="mimeTypeImage">image/jpeg</string>
+    <string name="imageFileType">.jpg</string>
     <string name="errorMessage">Oops… Something went wrong</string>
     <string name="notFoundMessage">No such recipe found</string>
     <string name="sortByName">Sorting by name</string>
