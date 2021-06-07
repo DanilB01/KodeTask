@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
-import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
 import com.example.recipeapp.R
 import com.example.recipeapp.adapter.RecipeImagesAdapter
@@ -19,16 +18,14 @@ import com.example.recipeapp.view.dialog.PhotoShowFragment
 
 class DetailsActivity : AppCompatActivity(), RecipeImageAdapterListener {
 
-    private lateinit var binding: ActivityDetailsBinding
+    private val binding by lazy { ActivityDetailsBinding.inflate(layoutInflater) }
     private val model: DetailsViewModel by viewModels()
     private val imagesAdapter = RecipeImagesAdapter(this)
     private val similarRecipeAdapter = SimilarRecipeAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_details)
-        binding.lifecycleOwner = this
+        setContentView(binding.root)
 
         binding.toolbar.title = ""
         setSupportActionBar(binding.toolbar)

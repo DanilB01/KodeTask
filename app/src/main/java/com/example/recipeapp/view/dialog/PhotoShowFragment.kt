@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.graphics.drawable.toBitmap
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -22,7 +21,7 @@ class PhotoShowFragment(
     private val imageURL: String
 ): DialogFragment() {
 
-    private lateinit var binding: DialogPhotoShowingBinding
+    private val binding by lazy { DialogPhotoShowingBinding.inflate(layoutInflater) }
     private val viewModel by lazy {
         ViewModelProvider(this).get(PhotoViewModel::class.java)
     }
@@ -45,8 +44,6 @@ class PhotoShowFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(
-            inflater, R.layout.dialog_photo_showing, container, false)
         return binding.root
     }
 

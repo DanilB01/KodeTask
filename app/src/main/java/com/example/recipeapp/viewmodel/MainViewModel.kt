@@ -14,6 +14,9 @@ import java.lang.Exception
 class MainViewModel: ViewModel() {
     private val model = RecipeModel()
 
+    private var sortOption = 0
+    private var query = ""
+
     private var _recipesList: MutableLiveData<List<Recipe>> = MutableLiveData()
 
     private var _filteredRecipeList: MutableLiveData<List<Recipe>> = MutableLiveData()
@@ -25,9 +28,38 @@ class MainViewModel: ViewModel() {
     private var _isError: MutableLiveData<Boolean> = MutableLiveData()
     val isError: LiveData<Boolean> = _isError
 
+    private var _isNotFound: MutableLiveData<Boolean> = MutableLiveData()
+    val isNotFound: LiveData<Boolean> = _isNotFound
+
     init {
+        _isNotFound.value = false
         refreshData()
     }
+
+    private fun filterData() {
+        _filteredRecipeList.value = _recipesList.value?.filter {
+            it.name.contains(query, true) ||
+                    it.instructions.contains(query, true) ||
+                    it.description?.contains(query, true) == true
+        }
+        _isNotFound.value = _filteredRecipeList.value.isNullOrEmpty()
+        sortData()
+    }
+
+    private fun sortData() {
+        when(sortOption){
+            R.id.sortByNameRadioButton -> {
+                _filteredRecipeList.value = _filteredRecipeList.value?.sortedBy { it.name }
+            }
+            R.id.sortByDateRadioButton -> {
+                _filteredRecipeList.value = _filteredRecipeList.value?.sortedByDescending { it.lastUpdated }
+            }
+        }
+    }
+
+    fun getSelectedSortOption() = sortOption
+
+    fun getFilterQuery() = query
 
     fun refreshData() {
         GlobalScope.launch(Dispatchers.Main) {
@@ -37,6 +69,8 @@ class MainViewModel: ViewModel() {
             try {
                 _recipesList.value = model.getRecipes()
                 _filteredRecipeList.value = _recipesList.value
+                filterData()
+                sortData()
                 _isError.value = false
             } catch (e: Exception) {
                 _isError.value = true
@@ -45,27 +79,18 @@ class MainViewModel: ViewModel() {
         }
     }
 
-    fun filterData(query: String?): Boolean{
-        return if(query != null) {
-            _filteredRecipeList.value = _recipesList.value?.filter {
-                it.name.contains(query, true) ||
-                        it.instructions.contains(query, true) ||
-                        it.description?.contains(query, true) == true
-            }
+    fun setSortOption(newSortOption: Int) {
+        sortOption = newSortOption
+        sortData()
+    }
+
+    fun setDataFilter(newQuery: String?): Boolean{
+        return if(newQuery != null) {
+            query = newQuery
+            filterData()
             true
         } else {
             false
-        }
-    }
-
-    fun sortData(sortOption: Int) {
-        when(sortOption){
-            R.id.sortByNameRadioButton -> {
-                _filteredRecipeList.value = _filteredRecipeList.value?.sortedBy { it.name }
-            }
-            R.id.sortByDateRadioButton -> {
-                _filteredRecipeList.value = _filteredRecipeList.value?.sortedBy { it.lastUpdated }
-            }
         }
     }
 }

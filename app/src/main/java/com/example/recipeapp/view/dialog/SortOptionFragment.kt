@@ -4,16 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.example.recipeapp.R
 import com.example.recipeapp.databinding.DialogSortOprionBinding
 
 class SortOptionFragment(
-        private val sortListener: SortOptionListener
+        private val sortListener: SortOptionListener,
+        private val selectedOption: Int
 ): DialogFragment() {
 
-    private lateinit var binding: DialogSortOprionBinding
+    private val binding by lazy { DialogSortOprionBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,13 +26,13 @@ class SortOptionFragment(
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(
-                inflater, R.layout.dialog_sort_oprion, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.sortRadioGroup.check(selectedOption)
 
         binding.cancelSortButton.setOnClickListener {
             dialog?.dismiss()
