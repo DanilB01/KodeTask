@@ -7,7 +7,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:cardCornerRadius="16dp"
-    android:layout_marginEnd="16dp"
     android:layout_marginBottom="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,7 +25,7 @@
         <TextView
             android:id="@+id/similarRecipeNameTextView"
             android:layout_margin="8dp"
-            style="@style/SubtitleTextStyle"
+            style="@style/SubtitleTextStyle.FixedLines"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/similarRecipeImageView"
             app:layout_constraintStart_toStartOf="@+id/similarRecipeImageView"

@@ -17,16 +17,15 @@ import com.example.recipeapp.R
 import com.example.recipeapp.databinding.DialogPhotoShowingBinding
 import com.example.recipeapp.viewmodel.PhotoViewModel
 
-class PhotoShowFragment(
-    private val imageURL: String
-): DialogFragment() {
+class PhotoShowFragment: DialogFragment() {
 
     private val binding by lazy { DialogPhotoShowingBinding.inflate(layoutInflater) }
     private val viewModel by lazy {
         ViewModelProvider(this).get(PhotoViewModel::class.java)
     }
-    private val permission = Manifest.permission.WRITE_EXTERNAL_STORAGE
+    private val imageURL by lazy { arguments?.getString(requireActivity().getString(R.string.imageURL)) }
 
+    private val permission = Manifest.permission.WRITE_EXTERNAL_STORAGE
     private val requestPermissions = registerForActivityResult(ActivityResultContracts.RequestPermission()) { result ->
         viewModel.setPermittedStatus(result)
         if (result) {
@@ -37,6 +36,7 @@ class PhotoShowFragment(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NO_TITLE, R.style.FullScreenDialog)
+
     }
 
     override fun onCreateView(

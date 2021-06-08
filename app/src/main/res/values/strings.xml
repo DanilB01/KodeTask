@@ -9,6 +9,9 @@
     <string name="forbiddenMessage">Saving images is forbidden</string>
     <string name="mimeTypeImage">image/jpeg</string>
     <string name="imageFileType">.jpg</string>
+    <string name="imageURL">imageURL</string>
+    <string name="selectedOption">selectedOption</string>
+    <string name="sortListener">sortListener</string>
     <string name="errorMessage">Oops… Something went wrong</string>
     <string name="notFoundMessage">No such recipe found</string>
     <string name="name">name</string>

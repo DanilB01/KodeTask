@@ -19,6 +19,7 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="@color/white"
+            app:statusBarScrim="@android:color/transparent"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
             app:toolbarId="@id/detailsToolbar">
 

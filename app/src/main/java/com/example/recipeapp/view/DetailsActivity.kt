@@ -1,6 +1,7 @@
 package com.example.recipeapp.view
 
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -11,7 +12,6 @@ import com.example.recipeapp.R
 import com.example.recipeapp.adapter.RecipeImagesAdapter
 import com.example.recipeapp.adapter.SimilarRecipeAdapter
 import com.example.recipeapp.adapter.interfaces.RecipeImageAdapterListener
-import com.example.recipeapp.data.Recipe
 import com.example.recipeapp.data.RecipeDetails
 import com.example.recipeapp.databinding.ActivityDetailsBinding
 import com.example.recipeapp.decoration.SimilarRecipeItemDecorator
@@ -35,6 +35,7 @@ class DetailsActivity : AppCompatActivity(), RecipeImageAdapterListener {
 
         setUpToolbar()
         setUpDynamicLists()
+        setUpAppBar()
 
         model.recipe.observe(this) {
             onRecipeChanged(it)
@@ -57,6 +58,14 @@ class DetailsActivity : AppCompatActivity(), RecipeImageAdapterListener {
         })
     }
 
+    private fun setUpAppBar() {
+        if(resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            val layoutParams = binding.appBarLayout.layoutParams
+            layoutParams.height = resources.getDimensionPixelSize(R.dimen.appBarLayoutHeightLandscape)
+            binding.appBarLayout.layoutParams = layoutParams
+        }
+    }
+
     private fun setUpToolbar() {
         binding.detailsToolbar.title = ""
         setSupportActionBar(binding.detailsToolbar)
@@ -69,7 +78,7 @@ class DetailsActivity : AppCompatActivity(), RecipeImageAdapterListener {
         binding.imageViewPager.adapter = imagesAdapter
         binding.detailsView.similarRecyclerView.adapter = similarRecipeAdapter
         binding.detailsView.similarRecyclerView.addItemDecoration(
-                SimilarRecipeItemDecorator(resources.getDimensionPixelSize(R.dimen.similarRecipeDividerPadding))
+                SimilarRecipeItemDecorator(resources.getDimensionPixelSize(R.dimen.recipeItemBordersPadding), resources.getDimensionPixelSize(R.dimen.recipeItemDividerPadding))
         )
         binding.dotsIndicator.setViewPager2(binding.imageViewPager)
     }
@@ -90,7 +99,11 @@ class DetailsActivity : AppCompatActivity(), RecipeImageAdapterListener {
     }
 
     override fun openImage(imageURL: String) {
-        PhotoShowFragment(imageURL).show(supportFragmentManager, resources.getString(R.string.photoShow))
+        val photoFragment = PhotoShowFragment()
+        val args = Bundle()
+        args.putString(getString(R.string.imageURL), imageURL)
+        photoFragment.arguments = args
+        photoFragment.show(supportFragmentManager, resources.getString(R.string.photoShow))
     }
 
     override fun openRecipeDetails(recipeUuid: String) {

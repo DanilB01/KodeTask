@@ -1,6 +1,7 @@
 package com.example.recipeapp.view
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -8,11 +9,16 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.recipeapp.R
 import com.example.recipeapp.adapter.RecipeAdapter
 import com.example.recipeapp.adapter.interfaces.RecipeAdapterListener
 import com.example.recipeapp.databinding.ActivityMainBinding
-import com.example.recipeapp.decoration.RecipeItemDecoration
+import com.example.recipeapp.decoration.GridRecipeItemDecoration
+import com.example.recipeapp.decoration.LinearRecipeItemDecoration
+import com.example.recipeapp.view.dialog.PhotoShowFragment
 import com.example.recipeapp.view.dialog.SortOptionFragment
 import com.example.recipeapp.view.dialog.SortOptionListener
 import com.example.recipeapp.viewmodel.MainViewModel
@@ -28,11 +34,7 @@ class MainActivity: AppCompatActivity(), RecipeAdapterListener, SortOptionListen
         setContentView(binding.root)
 
         setSupportActionBar(binding.mainToolbar)
-
-        binding.recipeRecyclerView.adapter = recipeRecyclerAdapter
-        binding.recipeRecyclerView.addItemDecoration(
-                RecipeItemDecoration(resources.getDimensionPixelSize(R.dimen.recyclerItemBottomPadding))
-        )
+        setUpRecyclerView()
 
         model.filteredRecipeList.observe(this){
             recipeRecyclerAdapter.updateDataSet(it)
@@ -74,9 +76,7 @@ class MainActivity: AppCompatActivity(), RecipeAdapterListener, SortOptionListen
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.sortItem -> {
-                SortOptionFragment(this, model.getSelectedSortOption()).show(supportFragmentManager, getString(R.string.sortOption))
-            }
+            R.id.sortItem -> openSortDialog()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -97,5 +97,30 @@ class MainActivity: AppCompatActivity(), RecipeAdapterListener, SortOptionListen
         val intent = Intent(this, DetailsActivity::class.java)
         intent.putExtra(getString(R.string.uuid), recipeUuid)
         startActivity(intent)
+    }
+
+    private fun openSortDialog() {
+        val sortFragment = SortOptionFragment()
+        val args = Bundle()
+        args.putInt(getString(R.string.selectedOption), model.getSelectedSortOption())
+        sortFragment.arguments = args
+        sortFragment.show(supportFragmentManager, resources.getString(R.string.sortOption))
+    }
+
+    private fun setUpRecyclerView() {
+        binding.recipeRecyclerView.apply {
+            if(resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                this.layoutManager = GridLayoutManager(this@MainActivity, 2)
+                this.addItemDecoration(
+                        GridRecipeItemDecoration(resources.getDimensionPixelSize(R.dimen.recipeItemBordersPadding))
+                )
+            } else {
+                this.layoutManager = LinearLayoutManager(this@MainActivity)
+                this.addItemDecoration(
+                        LinearRecipeItemDecoration(resources.getDimensionPixelSize(R.dimen.recipeItemBordersPadding))
+                )
+            }
+        }
+        binding.recipeRecyclerView.adapter = recipeRecyclerAdapter
     }
 }
