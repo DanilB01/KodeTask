@@ -3,10 +3,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#5a5a5a</color>
+    <color name="lightBackground">#FAFAFA</color>
 
+    <color name="blue">#2567ef</color>
+    <color name="red">#fe574e</color>
+    <color name="yellow">#f8d061</color>
+
+<!--    <color name="paleGreenAlpha">#8ad18e</color>
     <color name="whiteGreen">#f0fdf0</color>
-    <color name="paleGreen">#A2F6A8</color>
-    <color name="paleGreenAlpha">#8ad18e</color>
 
-    <color name="secondaryColor">#8bffa8</color>
+    <color name="secondaryColor">#8bffa8</color>-->
 </resources>

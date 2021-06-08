@@ -11,8 +11,8 @@
     <string name="imageFileType">.jpg</string>
     <string name="errorMessage">Oops… Something went wrong</string>
     <string name="notFoundMessage">No such recipe found</string>
-    <string name="sortByName">Sorting by name</string>
-    <string name="sortByDate">Sorting by last update date</string>
+    <string name="name">name</string>
+    <string name="date">last update date</string>
     <string name="sort">Sort</string>
     <string name="cancel">Cancel</string>
     <string name="difficulty">Difficulty</string>
@@ -22,4 +22,5 @@
     <string name="back">Back</string>
     <string name="save">Save</string>
     <string name="recipePhoto">Recipe photo</string>
+    <string name="sortBy">Sort by</string>
 </resources>

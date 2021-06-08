@@ -7,29 +7,40 @@
     android:padding="16dp"
     android:background="@color/white">
 
+    <TextView
+        android:id="@+id/sortLabelTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TitleTextStyle"
+        android:text="@string/sortBy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <RadioGroup
         android:id="@+id/sortRadioGroup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/sortLabelTextView">
 
         <RadioButton
             android:id="@+id/sortByNameRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sortByName" />
+            android:text="@string/name" />
 
         <RadioButton
             android:id="@+id/sortByDateRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sortByDate" />
+            android:text="@string/date" />
 
     </RadioGroup>
 
-    <Button
+    <TextView
         android:id="@+id/sortButton"
         android:layout_marginTop="16dp"
         android:text="@string/sort"
@@ -37,11 +48,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sortRadioGroup" />
 
-    <Button
+    <TextView
         android:id="@+id/cancelSortButton"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         android:text="@string/cancel"
+        android:background="@null"
         style="@style/DialogButtonsStyle"
         app:layout_constraintEnd_toStartOf="@+id/sortButton"
         app:layout_constraintTop_toBottomOf="@+id/sortRadioGroup" />

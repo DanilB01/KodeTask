@@ -53,7 +53,6 @@ class MainActivity: AppCompatActivity(), RecipeAdapterListener, SortOptionListen
         binding.refreshLayout.setOnRefreshListener {
             model.refreshData()
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -12,7 +12,7 @@ class SimilarRecipeItemDecorator(
         val position = parent.getChildAdapterPosition(view)
         if(position == RecyclerView.NO_POSITION) return
         rect.left =
-                if (position == 0) 0
-                else padding
+                if (position == 0) padding
+                else 0
     }
 }

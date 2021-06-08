@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.MainActivity"
-    android:background="@color/whiteGreen">
+    android:fitsSystemWindows="true"
+    android:background="@color/lightBackground">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/mainToolbar"

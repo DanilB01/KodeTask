@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="recyclerItemBottomPadding">16dp</dimen>
-    <dimen name="similarRecipeDividerPadding">8dp</dimen>
+    <dimen name="similarRecipeDividerPadding">16dp</dimen>
     <dimen name="cardViewElevation">16dp</dimen>
 
     <!-- Depends on picture's size in difficulty_rating_drawable.xml -->

@@ -5,15 +5,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingHorizontal="16dp"
     android:paddingVertical="16dp"
-    android:background="@color/whiteGreen">
+    android:background="@color/lightBackground">
 
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         style="@style/TitleTextStyle"
+        android:layout_marginHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,6 +22,7 @@
         android:id="@+id/difficultyLabelTextView"
         style="@style/BasicTextStyle.Bold"
         android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
         android:text="@string/difficulty"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,6 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/difficultyRatingBarHeight"
         android:layout_marginTop="4dp"
+        android:layout_marginHorizontal="16dp"
         android:isIndicator="true"
         android:progressDrawable="@drawable/difficulty_rating_drawable"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +43,7 @@
         android:id="@+id/descriptionLabelTextView"
         style="@style/BasicTextStyle.Bold"
         android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
         android:text="@string/description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,6 +52,7 @@
     <TextView
         android:id="@+id/descriptionTextView"
         android:layout_marginTop="4dp"
+        android:layout_marginHorizontal="16dp"
         style="@style/BasicTextStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +62,7 @@
         android:id="@+id/instructionLabelTextView"
         style="@style/BasicTextStyle.Bold"
         android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
         android:text="@string/instruction"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,6 +71,7 @@
     <TextView
         android:id="@+id/instructionTextView"
         android:layout_marginTop="4dp"
+        android:layout_marginHorizontal="16dp"
         style="@style/BasicTextStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,6 +81,7 @@
         android:id="@+id/similarLabelTextView"
         style="@style/BasicTextStyle.Bold"
         android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
         android:text="@string/similarMessage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

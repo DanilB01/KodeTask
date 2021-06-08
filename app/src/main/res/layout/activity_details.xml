@@ -10,20 +10,21 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/appBarLayoutHeight"
-        android:fitsSystemWindows="true">
+        android:layout_height="@dimen/appBarLayoutHeight">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="@color/paleGreen"
+            app:contentScrim="@color/white"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
             app:toolbarId="@id/detailsToolbar">
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/imageViewPager"
+                android:fitsSystemWindows="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -38,15 +39,14 @@
                 app:dotsSize="8dp"
                 app:dotsSpacing="2dp"
                 android:layout_gravity="center|bottom"
-                android:layout_marginBottom="8dp"
-                />
+                android:layout_marginBottom="8dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/photoNumberChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                app:chipBackgroundColor="@color/whiteGreen"
+                app:chipBackgroundColor="@color/white"
                 android:layout_marginEnd="8dp"/>
 
             <androidx.appcompat.widget.Toolbar
@@ -54,6 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
+                android:elevation="16dp"
                 app:navigationIcon="@drawable/ic_arrow_back_black"/>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
