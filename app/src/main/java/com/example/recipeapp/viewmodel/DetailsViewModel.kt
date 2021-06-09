@@ -19,18 +19,23 @@ class DetailsViewModel: ViewModel() {
     private var _isError: MutableLiveData<Boolean> = MutableLiveData()
     val isError: LiveData<Boolean> = _isError
 
+    private var _isLoading: MutableLiveData<Boolean> = MutableLiveData()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     fun setRecipe(recipeUuid: String?) {
         if(recipeUuid == null) {
             _isError.value = true
             return
         }
         GlobalScope.launch(Dispatchers.Main) {
+            _isLoading.value = true
             try {
                 _recipe.value = model.getRecipe(recipeUuid)
                 _isError.value = false
             } catch (e: Exception) {
                 _isError.value = true
             }
+            _isLoading.value = false
         }
     }
 }

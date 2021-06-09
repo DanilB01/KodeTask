@@ -46,6 +46,10 @@ class DetailsActivity : AppCompatActivity(), RecipeImageAdapterListener {
                 showErrorToast()
         }
 
+        model.isLoading.observe(this) {
+            binding.recipeDetailsProgressBar.isVisible = it
+        }
+
         binding.imageViewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
