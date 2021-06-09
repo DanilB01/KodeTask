@@ -22,11 +22,12 @@ import com.example.recipeapp.view.dialog.PhotoShowFragment
 import com.example.recipeapp.view.dialog.SortOptionFragment
 import com.example.recipeapp.view.dialog.SortOptionListener
 import com.example.recipeapp.viewmodel.MainViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity: AppCompatActivity(), RecipeAdapterListener, SortOptionListener, SearchView.OnQueryTextListener {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private val model: MainViewModel by viewModels()
+    private val model: MainViewModel by viewModel()
     private val recipeRecyclerAdapter = RecipeAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {

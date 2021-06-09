@@ -3,15 +3,18 @@ package com.example.recipeapp.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.recipeapp.data.RecipeDetails
 import com.example.recipeapp.model.RecipeModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.koin.java.KoinJavaComponent.inject
 import java.lang.Exception
 
-class DetailsViewModel: ViewModel() {
-    private val model = RecipeModel()
+class DetailsViewModel(
+    private val model: RecipeModel
+): ViewModel() {
 
     private var _recipe: MutableLiveData<RecipeDetails> = MutableLiveData()
     val recipe: LiveData<RecipeDetails> = _recipe
@@ -27,7 +30,7 @@ class DetailsViewModel: ViewModel() {
             _isError.value = true
             return
         }
-        GlobalScope.launch(Dispatchers.Main) {
+        viewModelScope.launch(Dispatchers.Main) {
             _isLoading.value = true
             try {
                 _recipe.value = model.getRecipe(recipeUuid)

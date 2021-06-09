@@ -3,16 +3,20 @@ package com.example.recipeapp.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.recipeapp.R
 import com.example.recipeapp.data.Recipe
 import com.example.recipeapp.model.RecipeModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.koin.java.KoinJavaComponent.get
+import org.koin.java.KoinJavaComponent.inject
 import java.lang.Exception
 
-class MainViewModel: ViewModel() {
-    private val model = RecipeModel()
+class MainViewModel(
+    private val model: RecipeModel
+): ViewModel() {
 
     private var sortOption = 0
     private var query = ""
@@ -62,7 +66,7 @@ class MainViewModel: ViewModel() {
     fun getFilterQuery() = query
 
     fun refreshData() {
-        GlobalScope.launch(Dispatchers.Main) {
+        viewModelScope.launch(Dispatchers.Main) {
             _isNotFound.value = false
             _isLoading.value = true
             _recipesList.value = emptyList()

@@ -15,14 +15,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.recipeapp.R
 import com.example.recipeapp.databinding.DialogPhotoShowingBinding
+import com.example.recipeapp.model.PhotoModel
 import com.example.recipeapp.viewmodel.PhotoViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PhotoShowFragment: DialogFragment() {
 
     private val binding by lazy { DialogPhotoShowingBinding.inflate(layoutInflater) }
-    private val viewModel by lazy {
-        ViewModelProvider(this).get(PhotoViewModel::class.java)
-    }
+    private val viewModel: PhotoViewModel by viewModel()
     private val imageURL by lazy { arguments?.getString(requireActivity().getString(R.string.imageURL)) }
 
     private val permission = Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -53,6 +53,7 @@ class PhotoShowFragment: DialogFragment() {
         Glide
             .with(this)
             .load(imageURL)
+            .placeholder(R.drawable.pic_error)
             .into(binding.photoView)
 
         viewModel.isPermitted.observe(this){

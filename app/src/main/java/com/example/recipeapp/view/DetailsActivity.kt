@@ -18,11 +18,13 @@ import com.example.recipeapp.decoration.SimilarRecipeItemDecorator
 import com.example.recipeapp.viewmodel.DetailsViewModel
 import com.example.recipeapp.utils.formatText
 import com.example.recipeapp.view.dialog.PhotoShowFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailsActivity : AppCompatActivity(), RecipeImageAdapterListener {
 
     private val binding by lazy { ActivityDetailsBinding.inflate(layoutInflater) }
-    private val model: DetailsViewModel by viewModels()
+    private val model: DetailsViewModel by viewModel()
+
     private val imagesAdapter = RecipeImagesAdapter(this)
     private val similarRecipeAdapter = SimilarRecipeAdapter(this)
 

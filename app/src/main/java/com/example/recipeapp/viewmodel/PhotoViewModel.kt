@@ -1,15 +1,14 @@
 package com.example.recipeapp.viewmodel
 
-import android.app.Application
 import android.graphics.Bitmap
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.recipeapp.model.PhotoModel
 
-class PhotoViewModel(application: Application): AndroidViewModel(application) {
-
-    private val model = PhotoModel(application.applicationContext)
+class PhotoViewModel(
+    private val model: PhotoModel
+): ViewModel() {
 
     private var _isPermitted: MutableLiveData<Boolean> = MutableLiveData()
     val isPermitted: LiveData<Boolean> = _isPermitted
