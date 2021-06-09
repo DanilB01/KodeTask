@@ -13,10 +13,7 @@ class SortOptionFragment: DialogFragment() {
     private val binding by lazy { DialogSortOprionBinding.inflate(layoutInflater) }
     private val selectedOption by lazy { arguments?.getInt(requireActivity().getString(R.string.selectedOption)) }
 
-    private val sortListener by lazy {
-        if(activity is SortOptionListener) activity as SortOptionListener
-        else null
-    }
+    private val sortListener by lazy { activity as? SortOptionListener }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +36,7 @@ class SortOptionFragment: DialogFragment() {
         }
 
         binding.cancelSortButton.setOnClickListener {
-            dialog?.dismiss()
+            dismiss()
         }
 
         binding.sortButton.setOnClickListener {

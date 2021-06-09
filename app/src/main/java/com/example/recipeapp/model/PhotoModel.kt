@@ -14,7 +14,7 @@ import java.util.*
 class PhotoModel(
         private val app: Context
 ) {
-    fun tryLoadImage(bitmap: Bitmap): Boolean{
+    fun trySaveImage(bitmap: Bitmap): Boolean{
         val imageName = buildString {
             append(Date().time)
             append(app.resources.getString(R.string.imageFileType))

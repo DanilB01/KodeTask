@@ -5,7 +5,6 @@ import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.viewpager2.widget.ViewPager2
 import com.example.recipeapp.R
@@ -38,30 +37,28 @@ class DetailsActivity : AppCompatActivity(), RecipeImageAdapterListener {
         setUpToolbar()
         setUpDynamicLists()
         setUpAppBar()
+        setUpObservers()
 
+        binding.imageViewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                binding.photoNumberChip.text = "${position + 1}/${imagesAdapter.itemCount}"
+            }
+        })
+    }
+
+    private fun setUpObservers() {
         model.recipe.observe(this) {
             onRecipeChanged(it)
         }
 
-        model.isError.observe(this) {
-            if(it)
-                showErrorToast()
+        model.isError.observe(this) { isError ->
+            if(isError) showErrorToast()
         }
 
         model.isLoading.observe(this) {
             binding.recipeDetailsProgressBar.isVisible = it
         }
-
-        binding.imageViewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                binding.photoNumberChip.text = buildString {
-                    append(position + 1)
-                    append(resources.getString(R.string.slashSign))
-                    append(imagesAdapter.itemCount)
-                }
-            }
-        })
     }
 
     private fun setUpAppBar() {

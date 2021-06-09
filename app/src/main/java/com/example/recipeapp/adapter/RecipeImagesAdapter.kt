@@ -4,15 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.recipeapp.adapter.interfaces.RecipeAdapterListener
 import com.example.recipeapp.adapter.interfaces.RecipeImageAdapterListener
-import com.example.recipeapp.data.Recipe
-import com.example.recipeapp.databinding.ItemRecipeBinding
 import com.example.recipeapp.databinding.ItemRecipeImageBinding
+import com.example.recipeapp.utils.loadImage
 
 class RecipeImagesAdapter(
         private val imageListener: RecipeImageAdapterListener
-): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+): RecyclerView.Adapter<RecipeImagesAdapter.RecipeImageViewHolder>() {
 
     private val imageUrlList = mutableListOf<String>()
 
@@ -22,31 +20,27 @@ class RecipeImagesAdapter(
         notifyDataSetChanged()
     }
 
-    class ViewHolder(
+    inner class RecipeImageViewHolder(
             private val itemBinding: ItemRecipeImageBinding
     ) : RecyclerView.ViewHolder(itemBinding.root) {
-        fun bind(
-                imageURL: String,
-                imageListener: RecipeImageAdapterListener
-        ) {
-            Glide
-                    .with(itemBinding.root)
-                    .load(imageURL)
-                    .into(itemBinding.imageView)
+        init {
             itemBinding.imageView.setOnClickListener {
-                imageListener.openImage(imageURL)
+                imageListener.openImage(imageUrlList[adapterPosition])
             }
+        }
+        fun bind(imageURL: String) {
+            loadImage(imageURL, itemBinding.imageView)
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeImageViewHolder {
         val itemBinding =
                 ItemRecipeImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(itemBinding)
+        return RecipeImageViewHolder(itemBinding)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ViewHolder).bind(imageUrlList[position], imageListener)
+    override fun onBindViewHolder(holder: RecipeImageViewHolder, position: Int) {
+        holder.bind(imageUrlList[position])
     }
 
     override fun getItemCount() = imageUrlList.size

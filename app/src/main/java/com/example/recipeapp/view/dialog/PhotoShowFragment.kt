@@ -11,11 +11,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.recipeapp.R
 import com.example.recipeapp.databinding.DialogPhotoShowingBinding
-import com.example.recipeapp.model.PhotoModel
+import com.example.recipeapp.utils.loadImageWithPlaceholder
 import com.example.recipeapp.viewmodel.PhotoViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -25,11 +24,11 @@ class PhotoShowFragment: DialogFragment() {
     private val viewModel: PhotoViewModel by viewModel()
     private val imageURL by lazy { arguments?.getString(requireActivity().getString(R.string.imageURL)) }
 
-    private val permission = Manifest.permission.WRITE_EXTERNAL_STORAGE
     private val requestPermissions = registerForActivityResult(ActivityResultContracts.RequestPermission()) { result ->
-        viewModel.setPermittedStatus(result)
         if (result) {
-            loadImage()
+            saveImage()
+        } else {
+            Toast.makeText(requireActivity(), getString(R.string.forbiddenMessage), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -56,11 +55,7 @@ class PhotoShowFragment: DialogFragment() {
             .placeholder(R.drawable.pic_error)
             .into(binding.photoView)
 
-        viewModel.isPermitted.observe(this){
-            if(!it) {
-                Toast.makeText(requireActivity(), getString(R.string.forbiddenMessage), Toast.LENGTH_SHORT).show()
-            }
-        }
+        loadImageWithPlaceholder(imageURL, binding.photoView)
 
         viewModel.isLoaded.observe(this){
             when(it) {
@@ -75,21 +70,21 @@ class PhotoShowFragment: DialogFragment() {
 
         binding.downloadImageButton.setOnClickListener {
             if(!checkPermission())
-                requestPermissions.launch(permission)
+                requestPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             else {
-                loadImage()
+                saveImage()
             }
         }
     }
 
-    private fun loadImage() {
+    private fun saveImage() {
         val imageBitmap = binding.photoView.drawable.toBitmap()
-        viewModel.loadImage(imageBitmap)
+        viewModel.saveImage(imageBitmap)
     }
 
     private fun checkPermission() =
             ActivityCompat.checkSelfPermission(
                     requireActivity().applicationContext,
-                    permission
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
             ) == PackageManager.PERMISSION_GRANTED
 }

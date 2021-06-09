@@ -7,9 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.recipeapp.data.RecipeDetails
 import com.example.recipeapp.model.RecipeModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.koin.java.KoinJavaComponent.inject
 import java.lang.Exception
 
 class DetailsViewModel(

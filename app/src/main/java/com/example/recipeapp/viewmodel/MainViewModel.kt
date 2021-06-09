@@ -8,10 +8,7 @@ import com.example.recipeapp.R
 import com.example.recipeapp.data.Recipe
 import com.example.recipeapp.model.RecipeModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.koin.java.KoinJavaComponent.get
-import org.koin.java.KoinJavaComponent.inject
 import java.lang.Exception
 
 class MainViewModel(

@@ -7,7 +7,6 @@ import com.example.recipeapp.network.RecipeApiRepository
 import com.example.recipeapp.viewmodel.DetailsViewModel
 import com.example.recipeapp.viewmodel.MainViewModel
 import com.example.recipeapp.viewmodel.PhotoViewModel
-import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
