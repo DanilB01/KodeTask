@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">RecipeApp</string>
+    <string name="uuid">uuid</string>
+    <string name="photoShow">PhotoShow</string>
+    <string name="sortOption">SortOption</string>
+    <string name="imageSavedMessage">Image was downloaded into folder Pictures</string>
+    <string name="savingErrorMessage">Error with downloading image</string>
+    <string name="forbiddenMessage">Saving images is forbidden</string>
+    <string name="mimeTypeImage">image/jpeg</string>
+    <string name="imageFileType">.jpg</string>
+    <string name="imageURL">imageURL</string>
+    <string name="selectedOption">selectedOption</string>
+    <string name="sortListener">sortListener</string>
+    <string name="errorMessage">Oops… Something went wrong</string>
+    <string name="notFoundMessage">No such recipe found</string>
+    <string name="name">name</string>
+    <string name="date">last update date</string>
+    <string name="sort">Sort</string>
+    <string name="cancel">Cancel</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="description">Description</string>
+    <string name="instruction">Instruction</string>
+    <string name="similarMessage">You may also like</string>
+    <string name="back">Back</string>
+    <string name="save">Save</string>
+    <string name="recipePhoto">Recipe photo</string>
+    <string name="sortBy">Sort by</string>
 </resources>
